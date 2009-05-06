@@ -28,4 +28,4 @@ the update method will be called with the same URL.
 
 == Known Issues
 
-When you add more than one observer, only the first is notified when page is first loaded.
+When you add more than one observers, only the first is notified when page is first loaded.
