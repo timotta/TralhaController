@@ -1,0 +1,14 @@
+<html>
+<head>
+<script src="tralhacontroller.js"></script>
+</head>
+<body>
+<hr/><div id="meudiv"></div><hr/>
+<a href="#Aqui-1">Clique aqui 1</a>
+<a href="#Aqui-2">Clique aqui 2</a>
+<a href="#Aqui-3">Clique aqui 3</a>
+<script>
+  TralhaController.addObserver( { update: function(url) { document.getElementById('meudiv').innerHTML = url; } } );
+</script>
+</body>
+</html>
