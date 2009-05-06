@@ -26,3 +26,6 @@ So the object observing the URL is notifed with the new URL on update method.
 If this user sends that URL for a friend, this friend will see the same content because 
 the update method will be called with the same URL.
 
+== Known Issues
+
+When you add more than one observer, only the first is notified when page is first loaded.
