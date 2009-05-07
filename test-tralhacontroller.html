@@ -3,12 +3,28 @@
 <script src="tralhacontroller.js"></script>
 </head>
 <body>
-<hr/><div id="meudiv"></div><hr/>
-<a href="#Aqui-1">Clique aqui 1</a>
-<a href="#Aqui-2">Clique aqui 2</a>
-<a href="#Aqui-3">Clique aqui 3</a>
+<hr/><div id="mydiv"></div><hr/>
+    <a href="#your_control_here-1">Click here 1</a>
+    <a href="#your_control_here-2">Click here 2</a>
+    <a href="#your_control_here-3">Click here 3</a>
 <script>
-  TralhaController.addObserver( { update: function(url) { document.getElementById('meudiv').innerHTML = url; } } );
+  var observer_one = { 
+      update: function(url) {
+          var html = document.getElementById('mydiv').innerHTML
+          html = html + "observer <b>one</b> url["+ url +"]<br/>"
+          document.getElementById('mydiv').innerHTML = html;
+      }
+  }
+  var observer_two = { 
+      update: function(url) {
+          var html = document.getElementById('mydiv').innerHTML
+          html = html + "observer <b>two</b> url["+ url +"]<br/>"
+          document.getElementById('mydiv').innerHTML = html;
+      }
+  }
+
+  TralhaController.addObserver( observer_one );
+  TralhaController.addObserver( observer_two );
 </script>
 </body>
 </html>
