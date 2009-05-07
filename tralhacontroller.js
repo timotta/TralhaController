@@ -27,7 +27,7 @@ var TralhaController = {
         } else {
           alert("O observer numero [" + i + "] deve implementar o metodo update.");
         }
-       }
+      }
     }
   }
 }
