@@ -1,11 +1,11 @@
 = TralhaController
 
 TralhaController is a class to observe URL changes and notify registered clients. It's
-useful to mantain permalinks on webpags that uses ajax.
+useful to mantain permalinks on webpages that uses ajax.
 
 == Example
 
-Firstly we register an observer on TralhaController:
+First we register an observer on TralhaController:
 
   var observer_one = {
       update: function(url) {
@@ -22,10 +22,25 @@ When a user clicks on this link, the URL changes:
 
  http://www.example.com/index.html#getinformation
 
-So the object observing the URL is notifed with the new URL on update method.
+So the object observing the URL is notifed with the new URL on the update method.
 
 If this user sends that URL for a friend, this friend will see the same content because
 the update method will be called with the same URL.
+
+== Possible use scenario
+
+Say you have a video page where you want the user to navigate through a related videos
+box. It is paginated and you don't want it to reload the page and make the user reload
+the video that he was watching.
+
+Also, you want to be able to copy the URL of the video with the page 3 on that box loaded
+and you want that your user be able to share it with his friend to see the page 3 and the video
+(all the context shared).
+
+With this script you can do that. You can watch changes after # and put there contextual
+information. When you send the url to a friend and he/she loads it,
+the observer will read that and load the third page of your
+related videos box.
 
 == Known Issues
 
@@ -33,7 +48,7 @@ There are no known issues at the time.
 
 [Fixed] When you add more than one observers, only the first is notified when page is first loaded.
 
-This javascript was tested and works on the following browsers:
+This class was tested and works on the following browsers:
   * Internet Explorer 6
   * Internet Explorer 7
   * Firefox 2
