@@ -27,6 +27,28 @@ So the object observing the URL is notifed with the new URL on the update method
 If this user sends that URL for a friend, this friend will see the same content because
 the update method will be called with the same URL.
 
+== Observing an url pattern
+
+If you want to make your observers be notified only if the new url has some pattern you can configure on TralhaController it by regular expressions.
+
+Say we have two observers:
+
+  var blue_observer = {
+      update: function(url) {
+          // do something, like an ajax request
+      }
+  }
+  var green_observer = {
+      update: function(url) {
+          // do something, like an ajax request
+      }
+  }
+  
+And you want that blue_observer be notified when the URLs changed to #blue and green_observers to #green, you can configure like this:
+
+  TralhaController.addObserver( "\\#blue", blue_observer );
+  TralhaController.addObserver( "\\#green", green_observer );
+
 == Possible use scenario
 
 Say you have a video page where you want the user to navigate through a related videos
@@ -53,5 +75,5 @@ This class was tested and works on the following browsers:
   * Internet Explorer 7
   * Firefox 2
   * Firefox 3
-  * Opera
+  * Opera 9.4
 

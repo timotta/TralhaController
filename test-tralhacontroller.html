@@ -7,6 +7,9 @@
     <a href="#your_control_here-1">Click here 1</a>
     <a href="#your_control_here-2">Click here 2</a>
     <a href="#your_control_here-3">Click here 3</a>
+    <hr/>
+    <a href="#blue-observer-here">Click that blue observer see</a>
+    <a href="#here-a-green-observer">Click that green observer see</a>
 <script>
   var observer_one = { 
       update: function(url) {
@@ -22,9 +25,25 @@
           document.getElementById('mydiv').innerHTML = html;
       }
   }
+  var blue_observer = { 
+	      update: function(url) {
+	          var html = document.getElementById('mydiv').innerHTML
+	          html = html + "<font color=\"blue\">blue observer url["+ url +"]</font><br/>"
+	          document.getElementById('mydiv').innerHTML = html;
+	      }
+  }
+  var green_observer = { 
+	      update: function(url) {
+	          var html = document.getElementById('mydiv').innerHTML
+	          html = html + "<font color=\"green\">green observer url["+ url +"]</font><br/>"
+	          document.getElementById('mydiv').innerHTML = html;
+	      }
+  }
 
   TralhaController.addObserver( observer_one );
   TralhaController.addObserver( observer_two );
+  TralhaController.addObserver( "\\#.*(blue).*", blue_observer );
+  TralhaController.addObserver( "\\#.*(green).*", green_observer );
 </script>
 </body>
 </html>

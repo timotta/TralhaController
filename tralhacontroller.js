@@ -1,12 +1,31 @@
 var TralhaController = {
   thread : null,
   observers : [],
-  addObserver:function(obj) {
-    this.observers.push(obj);
-    if (this.observers.length > 0 && this.urlAtual != undefined) {
+  addObserver:function() {
+	var obj = this.observerByArguments(arguments);
+    this.observers.push( obj );
+    if (this.urlAtual != undefined ) {
         obj.update(this.urlAtual);
     }
     this._init();
+  },
+  observerByArguments:function(args) {
+	obj = {};
+	if( args.length == 1 ) { 
+		obj.observer = args[0];
+		obj.update = function(url) {
+			this.observer.update(url);
+		}
+	} else if( args.length == 2 ) {
+		obj.regex = args[0];
+		obj.observer = args[1];
+		obj.update = function(url) {
+			if( (new RegExp(this.regex)).exec(url) ) {
+				this.observer.update(url);
+			}
+		}
+	}
+	return obj;
   },
   _init:function() {
     if(!this.thread) {
