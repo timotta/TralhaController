@@ -3,13 +3,15 @@
 <script src="tralhacontroller.js"></script>
 </head>
 <body>
-<hr/><div id="mydiv"></div><hr/>
+	<hr/><div id="mydiv"></div><hr/>
     <a href="#your_control_here-1">Click here 1</a>
     <a href="#your_control_here-2">Click here 2</a>
     <a href="#your_control_here-3">Click here 3</a>
     <hr/>
     <a href="#blue-observer-here">Click that blue observer see</a>
     <a href="#here-a-green-observer">Click that green observer see</a>
+    <hr/>
+    <a href="#" onclick="return errorMessage()">Test error message</a>
 <script>
   var observer_one = { 
       update: function(url) {
@@ -44,6 +46,12 @@
   TralhaController.addObserver( observer_two );
   TralhaController.addObserver( "\\#.*(blue).*", blue_observer );
   TralhaController.addObserver( "\\#.*(green).*", green_observer );
+
+  function errorMessage() {
+	  try{ TralhaController.addObserver( {} ); } catch(e) { alert(e); }
+	  try{ TralhaController.addObserver( "a", {} ); } catch(e) { alert(e); }
+  }
+  
 </script>
 </body>
 </html>

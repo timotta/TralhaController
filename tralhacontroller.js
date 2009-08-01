@@ -25,6 +25,9 @@ var TralhaController = {
 			}
 		}
 	}
+	if( !obj.observer.update ) {
+		throw "Observer must implements update(url) funtion";
+	}
 	return obj;
   },
   _init:function() {
@@ -41,11 +44,7 @@ var TralhaController = {
   _notify:function() {
     for(i=0;i<this.observers.length;i++) {
       if (this.urlAtual) {
-        if( this.observers[i].update ) {
-          this.observers[i].update( this.urlAtual );
-        } else {
-          alert("O observer numero [" + i + "] deve implementar o metodo update.");
-        }
+         this.observers[i].update( this.urlAtual );
       }
     }
   }
